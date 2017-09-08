@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  agency_icon: MyString
+  agency_name: MyString
+  availability_status: false
+  contract_id: MyString
+  contract_type: MyString
+  facility_id: 1
+  facility_name: MyString
+  facility_photo: MyString
+  favorite: false
+  latitude: 1.5
+  listing_only: false
+  longitude: 1.5
+  region_name: MyString
+  reservation_channel: MyString
+  short_name: MyString
+  sites_with_amps: false
+  sites_with_pets_allowed: false
+  sites_with_sewer_hookup: false
+  sites_with_water_hookup: false
+  sites_with_water_front: false
+  state: MyString
+
+two:
+  agency_icon: MyString
+  agency_name: MyString
+  availability_status: false
+  contract_id: MyString
+  contract_type: MyString
+  facility_id: 1
+  facility_name: MyString
+  facility_photo: MyString
+  favorite: false
+  latitude: 1.5
+  listing_only: false
+  longitude: 1.5
+  region_name: MyString
+  reservation_channel: MyString
+  short_name: MyString
+  sites_with_amps: false
+  sites_with_pets_allowed: false
+  sites_with_sewer_hookup: false
+  sites_with_water_hookup: false
+  sites_with_water_front: false
+  state: MyString

@@ -5,5 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Campsite.destroy_all
 
-include 'HTTParty'
+require 'HTTParty'
+
+@xml = HTTParty.get("http://api.amp.active.com/camping/campgrounds?pstate=GA&api_key=#{ENV['CAMPGROUNDKEY']}")
+response = Hash.from_xml(@xml.body)
+jsonres = response.to_json  
+
+puts "done"
