@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const SignUpDiv = styled.div`
     display: flex;
@@ -32,10 +33,20 @@ class SignUpButton extends Component {
             this.setState(newState);
         }
     }
+
+    _handleLogOut = ()=> {
+        axios.delete('/auth/sign_out').then((res) => {
+            console.log("user signed out")
+            localStorage.clear();
+        }).catch((err) => {
+            console.log("Couldn't log out")
+            console.log(err)
+        })
+    }
     render() {
         if (this.state.loggedIn){
             return (
-                <SignUpDiv>
+                <SignUpDiv onClick={this._handleLogOut}>
                     <p>Log out</p>
                 </SignUpDiv>
             )

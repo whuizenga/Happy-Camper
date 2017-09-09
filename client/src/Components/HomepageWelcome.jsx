@@ -75,7 +75,6 @@ class HomePageWelcome extends Component {
     }
     componentWillMount() {
         if (localStorage.getItem("access-token")){
-            console.log("user is logged in")
             const newState = {...this.state};
             newState.loggedIn = true;
             this.setState(newState);
@@ -126,7 +125,7 @@ class HomePageWelcome extends Component {
             <WelcomeContainer>
                 <h1>Welcome to Happy Camper!</h1>
                 
-                {!this.state.loggedin ?
+                {this.state.loggedIn ?
                     <LogInButton><p>Continue to Happy Camper</p></LogInButton> :
                     <LogInButton onClick={this._toggleLoginForm}><p>Log in</p></LogInButton>
                 }
