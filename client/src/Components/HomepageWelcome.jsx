@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 
 const WelcomeContainer = styled.div`
     align-self: center;
@@ -65,6 +66,7 @@ class HomePageWelcome extends Component {
         super()
         this.state={
             logInPressed: false,
+            redirect: false,
         }
     }
     _toggleLoginForm = (event) => {
@@ -74,12 +76,19 @@ class HomePageWelcome extends Component {
         newState.logInPressed = !this.state.logInPressed;
         this.setState(newState);
     }
+
+    _handleLogIn = (event) => {
+        event.preventDefault();
+
+        console.log(event.target.email.value);
+        console.log(event.target.password.value);
+    }
     render() {
         if(this.state.logInPressed){
             return(
                 <WelcomeContainer>
                 <h1>Happy Camper!</h1>
-                <Form>
+                <Form onSubmit={this._handleLogIn}>
                     <div>
                         <input type="email" name="email" placeholder="email" />
                     </div>
@@ -100,7 +109,8 @@ class HomePageWelcome extends Component {
                 <LogInButton onClick={this._toggleLoginForm}><p>Log in</p></LogInButton>
                 <ContinueAsGuest>Continue as guest</ContinueAsGuest>
             </WelcomeContainer>
-        );};
+        );
+    }
     }
 }
 
