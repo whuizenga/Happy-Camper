@@ -9,6 +9,7 @@ class App extends Component {
       <Router>
       <div>
         <Route exact path="/" component={HomePage} />
+
       </div>
       </Router>
     );
