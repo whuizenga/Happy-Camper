@@ -13,6 +13,7 @@ const HomePageContainer = styled.div`
     width: 100vw;
     background-image: url("https://i.imgur.com/M1mjOgL.jpg");
     background-size: cover;
+    background-filter: blur(2px);
 `
 
 class HomePage extends Component {
