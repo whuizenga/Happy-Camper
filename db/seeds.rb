@@ -9,8 +9,29 @@ Campsite.destroy_all
 
 require 'HTTParty'
 
-@xml = HTTParty.get("http://api.amp.active.com/camping/campgrounds?pstate=GA&api_key=#{ENV['CAMPGROUNDKEY']}")
-response = Hash.from_xml(@xml.body)
-jsonres = response.to_json  
+@xml = HTTParty.get("http://api.amp.active.com/camping/campgrounds?pstate=GA&api_key=")
+response = Hash.from_xml(@xml.body)  
 
-puts "done"
+response["resultset"]["result"].each do |res|
+    Campsite.new(
+        "agency_icon"
+        "agency_name"
+        "availability_status"
+        "contract_id"
+        "contract_type"
+        "facility_id"
+        "facility_name"
+        "facility_photo"
+        "favorite"
+        "latitude"
+        "listing_only"
+        "longitude"
+        "region_name"
+        "reservation_channel"
+        "short_name"
+        "sites_with_amps"
+        "sites_with_pets_allowed"
+        "sites_with_sewer_hookup"
+        "sites_with_water_hookup"
+        "sites_with_water_front"
+    )

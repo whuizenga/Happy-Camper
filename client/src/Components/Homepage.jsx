@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+import SignUpButton from './HomePageSignup';
+import Welcome from './HomepageWelcome';
+import Footer from './HomepageFooter';
+
+const HomePageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://i.imgur.com/M1mjOgL.jpg");
+    background-size: cover;
+`
 
 class HomePage extends Component {
     render() {
         return (
-            <div>
-                Make a button for signin-it goes in the upperleft corner
+            <HomePageContainer>
+                <SignUpButton />
 
-                Make a button that grows into the login screen
+                <Welcome />
 
-                Make a footer that has a link to the about page
-            </div>
+                <Footer />
+            </HomePageContainer>
         );
     }
 }
