@@ -19,13 +19,33 @@ const SignUpDiv = styled.div`
 `
 
 class SignUpButton extends Component {
+    constructor() {
+        super()
+        this.state={
+            loggedIn: false
+        }
+    }
+    componentWillMount() {
+        if (localStorage.getItem("access-token")){
+            const newState = {...this.state};
+            newState.loggedIn = true;
+            this.setState(newState);
+        }
+    }
     render() {
+        if (this.state.loggedIn){
+            return (
+                <SignUpDiv>
+                    <p>Log out</p>
+                </SignUpDiv>
+            )
+        } else {
         return (
             <SignUpDiv>
-                {/* {when the user is logged in this should become a logout button} */}
                 <p>Sign Up!</p>
             </SignUpDiv>
         );
+    }
     }
 }
 

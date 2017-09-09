@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+
+import { saveAuthTokens } from '../util.js';
 
 const WelcomeContainer = styled.div`
     align-self: center;
@@ -27,7 +30,7 @@ const LogInButton = styled.div`
     text-align: center;
     background-color: #CCB80C;
     color: #1B4721;
-    width: 8vw;
+    min-width: 8vw;
     height: 6vh;
     border: 3px solid #CCB80C;
     border-radius: 3vh;
@@ -67,6 +70,15 @@ class HomePageWelcome extends Component {
         this.state={
             logInPressed: false,
             redirect: false,
+            loggedIn : false,
+        }
+    }
+    componentWillMount() {
+        if (localStorage.getItem("access-token")){
+            console.log("user is logged in")
+            const newState = {...this.state};
+            newState.loggedIn = true;
+            this.setState(newState);
         }
     }
     _toggleLoginForm = (event) => {
@@ -79,9 +91,16 @@ class HomePageWelcome extends Component {
 
     _handleLogIn = (event) => {
         event.preventDefault();
+        const payload = {
+            email: event.target.email.value,
+            password: event.target.password.value
+        }
 
-        console.log(event.target.email.value);
-        console.log(event.target.password.value);
+        axios.post('/auth/sign_in', payload).then((res) => {
+            const headers = res.headers;
+            saveAuthTokens(headers);
+            this.setState({redirect: true})
+        })
     }
     render() {
         if(this.state.logInPressed){
@@ -106,8 +125,14 @@ class HomePageWelcome extends Component {
         return (
             <WelcomeContainer>
                 <h1>Welcome to Happy Camper!</h1>
-                <LogInButton onClick={this._toggleLoginForm}><p>Log in</p></LogInButton>
-                <ContinueAsGuest>Continue as guest</ContinueAsGuest>
+                
+                {!this.state.loggedin ?
+                    <LogInButton><p>Continue to Happy Camper</p></LogInButton> :
+                    <LogInButton onClick={this._toggleLoginForm}><p>Log in</p></LogInButton>
+                }
+                {this.state.loggedIn ? null :
+                    <ContinueAsGuest>Continue as guest</ContinueAsGuest>
+                }
             </WelcomeContainer>
         );
     }
