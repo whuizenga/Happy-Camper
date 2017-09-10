@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { saveAuthTokens } from '../util.js';
+import { saveAuthTokens } from '../../util.js';
 
 const WelcomeContainer = styled.div`
     align-self: center;
@@ -25,6 +25,7 @@ const WelcomeContainer = styled.div`
 
 const ContinueAsGuest = styled.p`
     color: white;
+    text-decoration: none;
 `
 const LogInButton = styled.div`
     text-align: center;
@@ -74,6 +75,7 @@ class HomePageWelcome extends Component {
         }
     }
     componentWillMount() {
+        this.setState({redirect: false});
         if (localStorage.getItem("access-token")){
             const newState = {...this.state};
             newState.loggedIn = true;
@@ -93,15 +95,22 @@ class HomePageWelcome extends Component {
         const payload = {
             email: event.target.email.value,
             password: event.target.password.value
-        }
+        };
 
         axios.post('/auth/sign_in', payload).then((res) => {
             const headers = res.headers;
             saveAuthTokens(headers);
-            this.setState({redirect: true})
+            this.setState({redirect: true});
         })
     }
+
+    _toggleRedirect = () => {
+        this.setState({redirect: true});
+    }
     render() {
+        if(this.state.redirect){
+            return (<Redirect to ="/map"/>)
+        }
         if(this.state.logInPressed){
             return(
                 <WelcomeContainer>
@@ -126,11 +135,11 @@ class HomePageWelcome extends Component {
                 <h1>Welcome to Happy Camper!</h1>
                 
                 {this.state.loggedIn ?
-                    <LogInButton><p>Continue to Happy Camper</p></LogInButton> :
+                    <Link to="/map"><LogInButton><p>Continue to Happy Camper</p></LogInButton></Link> :
                     <LogInButton onClick={this._toggleLoginForm}><p>Log in</p></LogInButton>
                 }
                 {this.state.loggedIn ? null :
-                    <ContinueAsGuest>Continue as guest</ContinueAsGuest>
+                    <Link to="/map"><ContinueAsGuest>Continue as guest</ContinueAsGuest></Link>
                 }
             </WelcomeContainer>
         );
