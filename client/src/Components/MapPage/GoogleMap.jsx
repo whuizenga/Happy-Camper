@@ -21,7 +21,7 @@ class GoogleMapContainer extends Component {
                 <GoogleMap
                     bootstrapURLKeys={{key: process.env.REACT_APP_MAPSKEY}}
                     defaultCenter={this.props.defaultCenter}
-                    defaultZoom={4}>
+                    defaultZoom={this.props.defaultZoom}>
                     
                 </GoogleMap>
             </MapDiv>

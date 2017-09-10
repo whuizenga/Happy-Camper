@@ -19,7 +19,7 @@ class MapPage extends Component {
         super()
         this.state={
             defaultCenter: {},
-            defaultZoom: 4,
+            defaultZoom: 8,
             renderMap: false,
         }
     }
