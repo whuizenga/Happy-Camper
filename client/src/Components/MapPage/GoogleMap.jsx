@@ -3,7 +3,7 @@ import GoogleMap from 'google-map-react';
 import styled from 'styled-components';
 
 const MapDiv = styled.div`
-    height: 85vh;
+    height: 84vh;
     width: 75vw;
 `
 

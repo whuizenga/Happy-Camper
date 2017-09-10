@@ -11,7 +11,7 @@ const CampgroundContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
     width: 100vw;
-    height: 90vh;
+    height: 84vh;
 `
 
 class MapPage extends Component {
