@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
+import CampgroundItem from './CampgroundItem';
+
+const CampgroundListDiv = styled.div`
+    border: 5px solid #CCB80C;
+    background-color: #81807D;
+    overflow: scroll;
+`
 
 class CampGroundList extends Component {
     render() {
         return (
-            <div>
-                This component will return a list of all nearby campgrounds.
-            </div>
+            <CampgroundListDiv>
+                {this.props.campgroundList.map((campground, i) => {
+                    return (<CampgroundItem key={i} index={i}
+                        campground={campground}/>
+                )})}
+            </CampgroundListDiv>
         );
     }
 }

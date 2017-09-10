@@ -7,13 +7,26 @@ const MapDiv = styled.div`
     width: 75vw;
 `
 
+const MapGifDiv = styled.div`
+    height: 84vh;
+    width: 75vw;
+    diplay: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        align-self: center;
+        width: 75vw;
+        margin: 6vh 0px;
+    }
+`
+
 class GoogleMapContainer extends Component {   
     render() {
         if(!this.props.renderMap){
             return(
-                <div>
-                    maps are loading...
-                </div>
+                <MapGifDiv>
+                    <img src="https://media.giphy.com/media/kxhY6bj6JA7Qs/giphy.gif" alt="map is loading"/>
+                </MapGifDiv>
             )
         } else {
         return (

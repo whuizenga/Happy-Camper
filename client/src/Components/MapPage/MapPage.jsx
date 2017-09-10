@@ -19,6 +19,7 @@ class MapPage extends Component {
     constructor(){
         super()
         this.state={
+            campgroundList: [],
             defaultCenter: {},
             defaultZoom: 8,
             renderMap: false,
@@ -37,7 +38,11 @@ class MapPage extends Component {
             newState.renderMap = true;
             this.setState(newState);
             axios.get(`/api/campsites?lat=${currentLatitude}&long=${currentLongitude}`).then((res) => {
-                console.log(res)
+                const newState={...this.state}
+                newState.campgroundList = res.data.resultset.result
+                newState.campgroundList.length = 10;
+                console.log(newState.campgroundList[0]);
+                this.setState(newState);
             })
         });
     }
@@ -47,11 +52,13 @@ class MapPage extends Component {
                 <Header />
 
                 <CampgroundContainer>
-                    <CampgroundList />
+                    <CampgroundList 
+                        campgroundList={this.state.campgroundList}/>
                     <GoogleMap 
                         defaultCenter={this.state.defaultCenter}
                         defaultZoom={this.state.defaultZoom}
-                        renderMap={this.state.renderMap}/>
+                        renderMap={this.state.renderMap}
+                        campgroundList={this.state.campgroundList}/>
                 </CampgroundContainer>
 
                 <Footer />
