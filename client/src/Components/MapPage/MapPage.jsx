@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -35,7 +36,9 @@ class MapPage extends Component {
             newState.defaultCenter = {lat: currentLatitude, lng: currentLongitude}
             newState.renderMap = true;
             this.setState(newState);
-            console.log(this.state);
+            axios.get(`/api/campsites?lat=${currentLatitude}&long=${currentLongitude}`).then((res) => {
+                console.log(res)
+            })
         });
     }
     render() {
