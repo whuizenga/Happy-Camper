@@ -35,13 +35,13 @@ class MapPage extends Component {
             const currentLongitude = position.coords.longitude;
             const currentLatitude = position.coords.latitude;
             newState.defaultCenter = {lat: currentLatitude, lng: currentLongitude}
-            newState.renderMap = true;
             this.setState(newState);
             axios.get(`/api/campsites?lat=${currentLatitude}&long=${currentLongitude}`).then((res) => {
                 const newState={...this.state}
                 newState.campgroundList = res.data.resultset.result
                 newState.campgroundList.length = 10;
                 console.log(newState.campgroundList[0]);
+                newState.renderMap = true;
                 this.setState(newState);
             })
         });

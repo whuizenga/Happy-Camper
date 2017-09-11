@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import GoogleMap from 'google-map-react';
 import styled from 'styled-components';
 
+import Marker from './Marker';
+
 const MapDiv = styled.div`
     height: 84vh;
     width: 75vw;
@@ -29,12 +31,15 @@ class GoogleMapContainer extends Component {
                 </MapGifDiv>
             )
         } else {
-        return (
-            <MapDiv>
+            return (
+                <MapDiv>
                 <GoogleMap
                     bootstrapURLKeys={{key: process.env.REACT_APP_MAPSKEY}}
                     defaultCenter={this.props.defaultCenter}
                     defaultZoom={this.props.defaultZoom}>
+                    {this.props.campgroundList.map((campground) => {
+                        return <Marker lat={campground.latitude} lng={campground.longitude} />
+                    })}
                 </GoogleMap>
             </MapDiv>
         );
