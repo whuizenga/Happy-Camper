@@ -7,4 +7,13 @@ class Api::CampsitesController < ApplicationController
         response = Hash.from_xml(@xml.body) 
         render json: response
     end
+
+    def show
+        lat = params[:lat]
+        long = params[:long]
+        message = "received params #{lat} and #{long}"
+        render json: {
+            "message": message
+        }
+    end
 end

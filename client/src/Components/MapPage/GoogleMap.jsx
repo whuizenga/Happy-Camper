@@ -16,7 +16,7 @@ const MapGifDiv = styled.div`
     img {
         align-self: center;
         width: 75vw;
-        margin: 6vh 0px;
+        margin: 8vh 0px;
     }
 `
 
@@ -35,7 +35,6 @@ class GoogleMapContainer extends Component {
                     bootstrapURLKeys={{key: process.env.REACT_APP_MAPSKEY}}
                     defaultCenter={this.props.defaultCenter}
                     defaultZoom={this.props.defaultZoom}>
-                    
                 </GoogleMap>
             </MapDiv>
         );
