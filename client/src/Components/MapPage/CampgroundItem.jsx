@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import ShowWeather from './ShowWeather';
@@ -25,6 +26,7 @@ class CampgroundItem extends Component {
             background-color: white;
         `
         return (
+            <Link to={`/campground/${this.props.campground.latitude}/${this.props.campground.longitude}`}>
             <CampgroundDiv>
                 <div>
                     {this.state.facilityName}
@@ -35,6 +37,7 @@ class CampgroundItem extends Component {
                         long={this.props.campground.longitude}/>
                  </div>
             </CampgroundDiv>
+            </Link>
         );
     }
 }
