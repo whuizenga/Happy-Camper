@@ -22,9 +22,15 @@ class Api::CampsitesController < ApplicationController
             city = response["city"]["name"]
             puts response["city"]["name"]
             @campground.city = city
+            @campground.save!
         end
 
-        # response = HTTParty.get("")
+        if @campground.weather.nil? || @campground.updated_at > 4.hours.ago
+            weather = HTTParty.get("https://api.darksky.net/forecast/#{ENV["DARKSKY"]}/#{lat},#{long}")
+            @campground.weather = weather
+            @campground.save!
+        end
+        
         render json: @campground
     end
 end
