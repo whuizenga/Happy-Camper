@@ -37,8 +37,8 @@ class GoogleMapContainer extends Component {
                     bootstrapURLKeys={{key: process.env.REACT_APP_MAPSKEY}}
                     defaultCenter={this.props.defaultCenter}
                     defaultZoom={this.props.defaultZoom}>
-                    {this.props.campgroundList.map((campground) => {
-                        return <Marker lat={campground.latitude} lng={campground.longitude} />
+                    {this.props.campgroundList.map((campground, i) => {
+                        return <Marker key={i} lat={campground.latitude} lng={campground.longitude} />
                     })}
                 </GoogleMap>
             </MapDiv>

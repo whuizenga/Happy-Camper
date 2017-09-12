@@ -39,7 +39,8 @@ class MapPage extends Component {
             axios.get(`/api/campsites?lat=${currentLatitude}&long=${currentLongitude}`).then((res) => {
                 const newState={...this.state}
                 newState.campgroundList = res.data.resultset.result
-                newState.campgroundList.length = 10;
+                //Limit the number of returns for now so I don't get blocked again.
+                newState.campgroundList.length = 2;
                 console.log(newState.campgroundList[0]);
                 newState.renderMap = true;
                 this.setState(newState);
