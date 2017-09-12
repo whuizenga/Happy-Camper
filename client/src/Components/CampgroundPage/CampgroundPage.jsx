@@ -15,11 +15,23 @@ const CampgroundContainer = styled.div`
     justify-content: space-between;
 `
 class CampgroundPage extends Component {
+    constructor() {
+        super()
+        this.state ={
+            campgroundInfo: {
+                weather: {
+                    daily: {
+                        data: {}
+                    }
+                }
+            }
+        }
+    }
     componentWillMount() {
         const lat = this.props.match.params.lat;
         const long = this.props.match.params.long;
         axios.get(`/api/campsites/weather?lat=${lat}&long=${long}`).then((res) => {
-            console.log(res.data);
+            this.setState({campgroundInfo: res.data});
     });
 }
     render() {
@@ -27,7 +39,7 @@ class CampgroundPage extends Component {
             <CampgroundContainer>
                 <Header />
                 <CampgroundDescription />
-                <CampgroundWeather />
+                <CampgroundWeather weather={this.state.campgroundInfo.weather.daily.data}/>
                 <Footer />
             </CampgroundContainer>
         );
