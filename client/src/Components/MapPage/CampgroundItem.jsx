@@ -3,12 +3,6 @@ import styled from 'styled-components';
 
 import ShowWeather from './ShowWeather';
 
-const CampgroundDiv = styled.div`
-    height: 12vh;
-    width: 25vw;
-    margin: 3px 0px;
-    background-color: white;
-`
 
 class CampgroundItem extends Component {
     constructor() {
@@ -24,6 +18,12 @@ class CampgroundItem extends Component {
         this.setState({facilityName});
     }
     render() {
+        const CampgroundDiv = styled.div`
+            height: 12vh;
+            width: 25vw;
+            margin: 3px 0px;
+            background-color: white;
+        `
         return (
             <CampgroundDiv>
                 <div>

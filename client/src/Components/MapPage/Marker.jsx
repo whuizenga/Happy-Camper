@@ -10,7 +10,6 @@ class Marker extends Component {
     }
     _toggleHover = () => {
         this.setState({hover: !this.state.hover})
-        console.log("hover")
     }
     render() {
         const MarkerDiv = styled.div`
