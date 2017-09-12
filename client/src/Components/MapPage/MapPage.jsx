@@ -40,7 +40,7 @@ class MapPage extends Component {
                 const newState={...this.state}
                 newState.campgroundList = res.data.resultset.result
                 //Limit the number of returns for now so I don't get blocked again.
-                newState.campgroundList.length = 2;
+                newState.campgroundList.length = 10;
                 console.log(newState.campgroundList[0]);
                 newState.renderMap = true;
                 this.setState(newState);

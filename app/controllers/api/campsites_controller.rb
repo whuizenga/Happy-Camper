@@ -20,12 +20,11 @@ class Api::CampsitesController < ApplicationController
         if @campground.city.nil?
             response = HTTParty.get("http://api.openweathermap.org/data/2.5/forecast?lat=#{lat}&lon=#{long}&appid=#{ENV["WEATHERKEY"]}")
             city = response["city"]["name"]
-            puts response["city"]["name"]
             @campground.city = city
             @campground.save!
         end
 
-        if @campground.weather.nil? || @campground.updated_at > 4.hours.ago
+        if @campground.weather.nil? # || @campground.updated_at > 4.hours.ago
             weather = HTTParty.get("https://api.darksky.net/forecast/#{ENV["DARKSKY"]}/#{lat},#{long}")
             @campground.weather = weather
             @campground.save!
