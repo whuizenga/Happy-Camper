@@ -5,7 +5,7 @@ class CampgroundDescription extends Component {
         return (
             <div>
                 <h1>{this.props.campgroundInfo.name}</h1>
-                <h3>{this.props.campgroundInfo.city}</h3>
+                <h3>{this.props.campgroundInfo.city}, {this.props.campgroundInfo.state}</h3>
             </div>
         );
     }
