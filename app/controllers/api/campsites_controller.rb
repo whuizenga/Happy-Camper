@@ -64,22 +64,29 @@ class Api::CampsitesController < ApplicationController
         end
         
         if @campground.park_id && @campground.state
-            puts "find the description!"
             xml = HTTParty.get("http://api.amp.active.com/camping/campground/details?contractCode=#{@campground.state}&parkId=#{@campground.park_id}&api_key=#{ENV["CAMPGROUNDKEY"]}")
-            response = Hash.from_xml(xml.body)
-            @campground.description = response["detailDescription"]["description"] || ""
-            @campground.alert = response["detailDescription"]["alert"] || ""
-            @campground.directions = response["detailDescription"]["drivingDirection"] || ""
-            @campground.short_description = response["detailDescription"]["facilitiesDescription"] || ""
-            @campground.important_information = response["detailDescription"]["importantInformation"] || ""
-            @campground.nearby_attractions = response["detailDescription"]["nearbyAttrctionDescription"] || ""
-            @campground.recreation_information = response["detailDescription"]["recreationDescription"] || ""
+            
+            html = xml.body.include? "<!DOCTYPE html>"
+
+            if html
+                puts "Ahh fuck, html"
+            else
+                puts "yay! no html"
+                response = Hash.from_xml(xml.body)
+                @campground.description = response["detailDescription"]["description"] || ""
+                @campground.alert = response["detailDescription"]["alert"] || ""
+                @campground.directions = response["detailDescription"]["drivingDirection"] || ""
+                @campground.short_description = response["detailDescription"]["facilitiesDescription"] || ""
+                @campground.important_information = response["detailDescription"]["importantInformation"] || ""
+                @campground.nearby_attractions = response["detailDescription"]["nearbyAttrctionDescription"] || ""
+                @campground.recreation_information = response["detailDescription"]["recreationDescription"] || ""
+                @campground.save!
+            end
     
-            @campground.save!
         end
-        
-        render json: {
-            "message": "updated"
-        }
+            render json: {
+                "message": "updated"
+            }
+
     end
 end
