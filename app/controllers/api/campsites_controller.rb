@@ -24,7 +24,9 @@ class Api::CampsitesController < ApplicationController
             @campground.save!
         end
 
-        if @campground.weather.nil? # || @campground.updated_at > 4.hours.ago
+        time = Time.new
+        
+        if @campground.weather.nil? || time-@campground.updated_at > 4*3600
             weather = HTTParty.get("https://api.darksky.net/forecast/#{ENV["DARKSKY"]}/#{lat},#{long}")
             @campground.weather = weather
             @campground.save!

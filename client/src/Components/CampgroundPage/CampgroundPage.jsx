@@ -21,7 +21,7 @@ class CampgroundPage extends Component {
             campgroundInfo: {
                 weather: {
                     daily: {
-                        data: {}
+                        data: []
                     }
                 }
             }
@@ -32,14 +32,17 @@ class CampgroundPage extends Component {
         const long = this.props.match.params.long;
         axios.get(`/api/campsites/weather?lat=${lat}&long=${long}`).then((res) => {
             this.setState({campgroundInfo: res.data});
+            console.log(res.data)
     });
 }
     render() {
         return (
             <CampgroundContainer>
                 <Header />
-                <CampgroundDescription />
-                <CampgroundWeather weather={this.state.campgroundInfo.weather.daily.data}/>
+                <CampgroundDescription campgroundInfo={this.state.campgroundInfo}/>
+                <CampgroundWeather weather={this.state.campgroundInfo.weather.daily.data}
+                    lat={this.props.match.params.lat}
+                    long={this.props.match.params.long}/>
                 <Footer />
             </CampgroundContainer>
         );

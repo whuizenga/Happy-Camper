@@ -35,7 +35,7 @@ class SignUpButton extends Component {
     }
 
     _handleLogOut = ()=> {
-        axios.delete('/auth/sign_out').then((res) => {
+        axios.delete("/auth/sign_out").then((res) => {
             console.log("user signed out")
             localStorage.clear();
         }).catch((err) => {

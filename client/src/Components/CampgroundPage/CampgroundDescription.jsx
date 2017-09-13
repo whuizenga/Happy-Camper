@@ -4,7 +4,8 @@ class CampgroundDescription extends Component {
     render() {
         return (
             <div>
-                This component will describe the campground.
+                <h1>{this.props.campgroundInfo.name}</h1>
+                <h3>{this.props.campgroundInfo.city}</h3>
             </div>
         );
     }
