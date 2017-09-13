@@ -1,19 +1,67 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import styled from 'styled-components';
 
+const OptionsDiv = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+`
+
+const FalseButton = styled.div`
+    background-color: #1B4721;
+    
+`
 class CampgroundDescription extends Component {
     constructor() {
         super()
         this.state= {
-            description: true,
+            description: false,
             alert: false,
             directions: false,
-            shortDes: false,
+            shortDes: true,
             important: false,
             nearby: false,
             recreation: false,
         }
     }
+    _setStateToFalse = () => {
+        const newState = {...this.state}
+        newState.description = false,
+        newState.alert = false,
+        newState.directions = false,
+        newState.shortDes = false,
+        newState.important = false,
+        newState.nearby = false,
+        newState.recreation = false,
+        this.setState(newState);
+    }
+    _moreInformation = () => {
+        this._setStateToFalse();
+        this.setState({description: true});
+    }
+
+    _showAlerts = () => {
+        this._setStateToFalse();
+        this.setState({alert: true});
+    }
+
+    _showImportantInfo = () => {
+        this._setStateToFalse();
+        this.setState({important: true});
+    }
+    _showDirections = () => {
+        this._setStateToFalse();
+        this.setState({directions: true});
+    }
+    _showNearbyInfo = () => {
+        this._setStateToFalse();
+        this.setState({nearby: true});
+    }
+    _showRecreation = () => {
+        this._setStateToFalse();
+        this.setState({recreation: true});
+    }
+    
     render() {
         let alertText = ""
         if (!this.props.campgroundInfo.alert){
@@ -32,6 +80,14 @@ class CampgroundDescription extends Component {
                 <p>{this.state.important ? this.props.campgroundInfo.important_information : null}</p>
                 <p>{this.state.nearby ? this.props.campgroundInfo.nearby_attractions : null}</p>
                 <p>{this.state.recreation ? this.props.campgroundInfo.recreation_information : null}</p>
+                <OptionsDiv>
+                    <div onClick={this._moreInformation}>More Info</div>
+                    <div onClick={this._showAlerts}>Alerts</div>
+                    <div onClick={this._showImportantInfo}>Important Information</div>
+                    <div onClick={this._showDirections}>Directions</div>
+                    <div onClick={this._showNearbyInfo}>Nearby Attractions</div>
+                    <div onClicl={this._showRecreation}>Recreational Activities</div>
+                </OptionsDiv>
             </div>
         );
     }
