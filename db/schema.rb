@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170913152057) do
+ActiveRecord::Schema.define(version: 20170913174030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,12 @@ ActiveRecord::Schema.define(version: 20170913152057) do
     t.string "city"
     t.string "state"
     t.string "park_id"
+    t.string "alert"
+    t.string "directions"
+    t.string "short_description"
+    t.string "important_information"
+    t.string "nearby_attractions"
+    t.string "recreation_information"
   end
 
   create_table "campsites", force: :cascade do |t|
