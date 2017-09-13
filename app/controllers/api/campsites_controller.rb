@@ -34,4 +34,29 @@ class Api::CampsitesController < ApplicationController
         
         render json: @campground
     end
+
+    def updated
+        lat = params[:lat]
+        long = params[:long]
+        state = params[:state]
+        park_id = params[:park_id]
+        @campground = Campground.find_by(latitude: lat, longitude: long)
+
+    if @campground.state.nil?
+        @campground.state = state.upcase   
+        @campground.save!;
+    end
+
+    if @campground.park_id.nil?
+        @campground.park_id = park_id
+        @campground.save!
+    end
+
+    if @campground.description.nil?
+        puts "campground description is nil"
+    end
+
+    render json: {
+        "message": "updated"
+    }
 end
