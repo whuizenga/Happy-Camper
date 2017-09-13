@@ -3,6 +3,10 @@ import styled from 'styled-components';
 
 import FiveDayForecast from './FiveDayForecast';
 
+const Wrapper = styled.div`
+    height: 44vh;
+    width: 100vw;
+`
 const DailyWeatherContainer = styled.div`
     display: flex;
     justify-content: space-around;
@@ -14,7 +18,7 @@ class CampgroundWeather extends Component {
         const weather = this.props.weather;
         weather.length = 5;
             return (
-            <div>
+            <Wrapper>
                 <h1>5-day weather forecast</h1>
                 <hr />
                 <DailyWeatherContainer>
@@ -24,7 +28,7 @@ class CampgroundWeather extends Component {
                 </DailyWeatherContainer>
                 Get more detailed information at
                 <a href={`https://darksky.net/forecast/${this.props.lat},${this.props.long}/us12/en`}>Dark Sky</a>  
-            </div>
+            </Wrapper>
             );
         }
     }

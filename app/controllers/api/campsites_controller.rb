@@ -34,7 +34,36 @@ class Api::CampsitesController < ApplicationController
             @campground.save!
         end
         
-        if @campground.park_id && @campground.state && @aged
+        
+        render json: @campground
+    end
+    
+    def update
+        lat = params[:lat]
+        long = params[:long]
+        state = params[:state]
+        park_id = params[:park_id]
+        name = params[:name]
+        @campground = Campground.find_by(latitude: lat, longitude: long)
+        
+        if @campground.state.nil?
+            @campground.state = state.upcase   
+            @campground.save!;
+        end
+        
+        if @campground.park_id.nil?
+            @campground.park_id = park_id
+            @campground.save!
+        end
+        
+        puts name.titleize
+        
+        if @campground.name.nil?
+            @campground.name = name.titleize
+            @campground.save!
+        end
+        
+        if @campground.park_id && @campground.state
             puts "find the description!"
             xml = HTTParty.get("http://api.amp.active.com/camping/campground/details?contractCode=#{@campground.state}&parkId=#{@campground.park_id}&api_key=#{ENV["CAMPGROUNDKEY"]}")
             response = Hash.from_xml(xml.body)
@@ -45,38 +74,10 @@ class Api::CampsitesController < ApplicationController
             @campground.important_information = response["detailDescription"]["importantInformation"] || ""
             @campground.nearby_attractions = response["detailDescription"]["nearbyAttrctionDescription"] || ""
             @campground.recreation_information = response["detailDescription"]["recreationDescription"] || ""
-
+    
             @campground.save!
         end
-
-        render json: @campground
-    end
-
-    def update
-        lat = params[:lat]
-        long = params[:long]
-        state = params[:state]
-        park_id = params[:park_id]
-        name = params[:name]
-        @campground = Campground.find_by(latitude: lat, longitude: long)
-
-        if @campground.state.nil?
-            @campground.state = state.upcase   
-            @campground.save!;
-        end
-
-        if @campground.park_id.nil?
-            @campground.park_id = park_id
-            @campground.save!
-        end
-
-        puts name.titleize
-
-        if @campground.name.nil?
-            @campground.name = name.titleize
-            @campground.save!
-        end
-
+        
         render json: {
             "message": "updated"
         }

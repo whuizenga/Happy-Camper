@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+const Wrapper = styled.div`
+    height: 40vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+`
 const OptionsDiv = styled.div`
     display: flex;
     justify-content: space-around;
@@ -88,16 +95,18 @@ class CampgroundDescription extends Component {
             alertText = this.props.campgroundInfo.alert;
         } 
         return (
-            <div>
+            <Wrapper>
+                <div>
                 <h1>{this.props.campgroundInfo.name}</h1>
                 <h3>{this.props.campgroundInfo.city}, {this.props.campgroundInfo.state}</h3>
                 <p>{this.state.description ? this.props.campgroundInfo.description : null}</p>
                 <p>{this.state.alert ? alertText : null}</p>
                 <p>{this.state.directions ? this.props.campgroundInfo.directions : null}</p>
-                <p>{this.state.shortDes ? this.props.campgroundInfo.short_description : null}</p>
+                <p>{this.state.shortDes ? this.props.campgroundInfo.short_description : null }</p>
                 <p>{this.state.important ? this.props.campgroundInfo.important_information : null}</p>
                 <p>{this.state.nearby ? this.props.campgroundInfo.nearby_attractions : null}</p>
                 <p>{this.state.recreation ? this.props.campgroundInfo.recreation_information : null}</p>
+                </div>
                 <OptionsDiv>
                     {this.state.description ? <TrueButton onClick={this._moreInformation}>More Info</TrueButton> : <FalseButton onClick={this._moreInformation}>More Info</FalseButton> }
                     {this.state.alert ?<TrueButton onClick={this._showAlerts}>Alerts</TrueButton> : <FalseButton onClick={this._showAlerts}>Alerts</FalseButton> }
@@ -106,7 +115,7 @@ class CampgroundDescription extends Component {
                     {this.state.nearby ? <TrueButton onClick={this._showNearbyInfo}>Nearby Attractions</TrueButton> : <FalseButton onClick={this._showNearbyInfo}>Nearby Attractions</FalseButton> }
                     {this.state. recreation ? <TrueButton onClick={this._showRecreation}>Recreational Activities</TrueButton> : <FalseButton onClick={this._showRecreation}>Recreational Activities</FalseButton> }
                 </OptionsDiv>
-            </div>
+            </Wrapper>
         );
     }
 }
