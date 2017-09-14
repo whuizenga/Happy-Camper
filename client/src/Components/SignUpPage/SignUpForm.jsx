@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 
+import { setAxiosHeaders } from '../../util.js';
+
 const SignUpContainer = styled.div`
     align-self: center;
     min-height: 20vh;
@@ -58,10 +60,35 @@ const Form = styled.form`
 }
 `
 class SignUpForm extends Component {
-    _handleSubmit(event) {
+    constructor(){
+        super()
+        this.state = {
+            redirect: false,
+        }
+    }
+
+    _handleSubmit= (event) => {
         event.preventDefault();
+
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        const passConfirm = event.target.password_confirmation.value;
+        const payload = {
+            email: email,
+            password: password,
+            password_confirmation: passConfirm
+          }
+        axios.post('/auth', payload).then((res) => {
+            setAxiosHeaders(res.headers);
+            const newState = {...this.state}
+            newState.redirect = true;
+            this.setState(newState);
+        })
     }
     render() {
+        if(this.state.redirect){
+            return(<Redirect to="/map" />)
+        } else {
         return (
             <SignUpContainer>
                 <h1>Be A Happy Camper!</h1>
@@ -81,6 +108,7 @@ class SignUpForm extends Component {
                 </Form>
             </SignUpContainer>
         );
+        }
     }
 }
 
