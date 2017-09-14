@@ -37,6 +37,9 @@ class CampgroundItem extends Component {
             margin: 3px 0px;
             background-color: white;
             font-family: 'Raleway', sans-serif;
+            @media (max-width: 1000px){
+                width: 100vw;
+            }
         `
         const CampgroundTitle = styled.div`
             a{

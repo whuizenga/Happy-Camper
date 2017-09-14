@@ -9,8 +9,12 @@ const Wrapper = styled.div`
     justify-content: space-between;
     font-family: 'Raleway', sans-serif;
     background: linear-gradient(to top right, #FFFFCC, white);
+    h1, h3, p {
+        margin: 0px 15px;
+    }
     h1, h3 {
         font-family: 'Righteous', cursive;
+        margin: 5px 15px;
     }
 `
 const OptionsDiv = styled.div`
@@ -28,6 +32,7 @@ const FalseButton = styled.div`
     box-shadow: 0px 0px 15px black;
     font-family: 'Raleway', sans-serif;
     margin-bottom: 10px;
+    height: 15px;
     :hover {
         border: 2px solid #CCB80C;
         color: #CCB80C;
@@ -42,6 +47,7 @@ const TrueButton = styled.div`
     box-shadow: 0px 0px 15px black;
     font-family: 'Raleway', sans-serif;
     margin-bottom: 10px;
+    height: 15px;
     :hover {
         border: 2px solid black;
         color: black;

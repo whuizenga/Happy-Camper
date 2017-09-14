@@ -7,6 +7,9 @@ import Marker from './Marker';
 const MapDiv = styled.div`
     height: 84vh;
     width: 75vw;
+    @media (max-width: 1000px){
+        display: none;
+    }
 `
 
 const MapGifDiv = styled.div`
@@ -19,6 +22,9 @@ const MapGifDiv = styled.div`
         align-self: center;
         width: 75vw;
         margin: 8vh 0px;
+    }
+    @media (max-width: 1000px){
+        display: none;
     }
 `
 
@@ -33,17 +39,17 @@ class GoogleMapContainer extends Component {
         } else {
             return (
                 <MapDiv>
-                <GoogleMap
-                    bootstrapURLKeys={{key: process.env.REACT_APP_MAPSKEY}}
-                    defaultCenter={this.props.defaultCenter}
-                    defaultZoom={this.props.defaultZoom}>
-                    {this.props.campgroundList.map((campground, i) => {
-                        return <Marker key={i} lat={campground.latitude} lng={campground.longitude} />
-                    })}
-                </GoogleMap>
-            </MapDiv>
-        );
-    }
+                    <GoogleMap
+                        bootstrapURLKeys={{key: process.env.REACT_APP_MAPSKEY}}
+                        defaultCenter={this.props.defaultCenter}
+                        defaultZoom={this.props.defaultZoom}>
+                        {this.props.campgroundList.map((campground, i) => {
+                            return <Marker key={i} lat={campground.latitude} lng={campground.longitude} />
+                        })}
+                    </GoogleMap>
+                </MapDiv>
+            );
+        }
     }
 }
 
