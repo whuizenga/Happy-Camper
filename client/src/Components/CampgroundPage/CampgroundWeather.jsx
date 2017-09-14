@@ -7,6 +7,7 @@ const Wrapper = styled.div`
     height: 44vh;
     width: 100vw;
     font-family: 'Raleway', sans-serif;
+    background: linear-gradient(to bottom right, #FFFFCC, white);
     h1 {
         font-family: 'Righteous', cursive;
     }
