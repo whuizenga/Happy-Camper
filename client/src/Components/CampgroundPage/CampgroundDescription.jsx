@@ -20,6 +20,7 @@ const FalseButton = styled.div`
     color: white;
     border-radius: 15px;
     padding: 8px;
+    box-shadow: 0px 0px 15px black;
     :hover {
         border: 2px solid #CCB80C;
         color: #CCB80C;
@@ -31,6 +32,7 @@ const TrueButton = styled.div`
     color: #1B4721;
     border-radius: 15px;
     padding: 8px;
+    box-shadow: 0px 0px 15px black;
     :hover {
         border: 2px solid black;
         color: black;
@@ -40,10 +42,10 @@ class CampgroundDescription extends Component {
     constructor() {
         super()
         this.state= {
-            description: false,
+            description: true,
             alert: false,
             directions: false,
-            shortDes: true,
+            shortDes: false,
             important: false,
             nearby: false,
             recreation: false,

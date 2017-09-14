@@ -13,7 +13,7 @@ const FooterContainer = styled.div`
     h1{
         margin: 0px 50px;
         color: #CCB80C;
-
+        text-shadow: 0px 0px 15px black;
     }
 `
 
