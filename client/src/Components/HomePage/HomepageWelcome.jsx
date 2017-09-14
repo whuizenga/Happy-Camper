@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { saveAuthTokens } from '../../util.js';
+import { setAxiosHeaders } from '../../util.js';
 
 const WelcomeContainer = styled.div`
     align-self: center;
@@ -121,7 +121,7 @@ class HomePageWelcome extends Component {
 
         axios.post('/auth/sign_in', payload).then((res) => {
             const headers = res.headers;
-            saveAuthTokens(headers);
+            setAxiosHeaders(headers);
             this.setState({redirect: true});
         })
     }
