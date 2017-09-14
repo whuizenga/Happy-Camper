@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import ShowWeather from './ShowWeather';
+import { saveAuthTokens } from '../../util.js';
 
 
 class CampgroundItem extends Component {
@@ -28,7 +29,7 @@ class CampgroundItem extends Component {
     _checkCampgroundDataIntegity = () => {
         console.log("clicked")
         axios.put(`/api/campsites/update?lat=${this.props.campground.latitude}&long=${this.props.campground.longitude}&state=${this.props.campground.state}&park_id=${this.props.campground.facilityID}&name=${this.state.facilityName}`).then((res) => {
-            console.log("successfully updated information")
+            saveAuthTokens(res.headers);
         })
     }
     render() {

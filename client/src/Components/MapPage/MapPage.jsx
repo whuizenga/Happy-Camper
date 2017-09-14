@@ -7,6 +7,8 @@ import Footer from './Footer';
 import CampgroundList from './CampgroundList';
 import GoogleMap from './GoogleMap';
 
+import { saveAuthTokens } from '../../util.js';
+
 const CampgroundContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -37,10 +39,11 @@ class MapPage extends Component {
             newState.defaultCenter = {lat: currentLatitude, lng: currentLongitude}
             this.setState(newState);
             axios.get(`/api/campsites?lat=${currentLatitude}&long=${currentLongitude}`).then((res) => {
+                saveAuthTokens(res.headers);
                 const newState={...this.state}
                 newState.campgroundList = res.data.resultset.result
                 //Limit the number of returns for now so I don't get blocked again.
-                newState.campgroundList.length = 10;
+                newState.campgroundList.length = 50;
                 console.log(newState.campgroundList[0]);
                 newState.renderMap = true;
                 this.setState(newState);

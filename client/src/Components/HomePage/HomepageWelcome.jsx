@@ -24,6 +24,9 @@ const WelcomeContainer = styled.div`
         text-shadow: 1px 1px 15px black;
         font-family: 'Righteous', cursive;
     }
+    a {
+        text-decoration: none;
+    }
 `
 
 const ContinueAsGuest = styled.p`
@@ -31,6 +34,9 @@ const ContinueAsGuest = styled.p`
     text-decoration: none;
     text-shadow: 1px 1px 10px black;
     font-family: 'Raleway', sans-serif;
+    :hover {
+        text-decoration: underline;
+    }
 `
 const LogInButton = styled.div`
     text-align: center;
