@@ -15,14 +15,14 @@ class Marker extends Component {
         const MarkerDiv = styled.div`
             position: absolute;
             top: ${this.state.hover ? "-40px" : "-30px" };
-            left: -50%;
+            right: -10px;
             img {
               height: ${this.state.hover ? "40px" : "30px" };
             }
           `
         return (
             <MarkerDiv onMouseEnter={this._toggleHover} onMouseLeave={this._toggleHover}>
-                <img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png" alt="marker" />
+                <img src="https://i.imgur.com/8KcuG4P.png" alt="marker" />
             </MarkerDiv>
         );
     }
