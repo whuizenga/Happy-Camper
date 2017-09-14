@@ -14,8 +14,10 @@ const SignUpDiv = styled.div`
     border-radius: 4vh;
     margin: 10px;
     align-self: flex-end;
+    box-shadow: 0px 0px 15px black;
     :hover {
-        border: 3px solid #1B4721
+        border: 3px solid #1B4721;
+        box-shadow: 0px 0px 20px black;
     }
 `
 

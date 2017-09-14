@@ -9,6 +9,7 @@ const FooterContainer = styled.div`
     justify-content: flex-end;
     align-items: center;
     margin: 0;
+    box-shadow: 0px 0px 15px black;
     h1{
         margin: 0px 50px;
         color: #CCB80C;

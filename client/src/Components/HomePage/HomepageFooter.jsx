@@ -8,6 +8,7 @@ const FooterDiv = styled.div`
     background-color: #CCB80C;
     display: flex;
     align-items: center;
+    box-shadow: 0px 0px 15px black;
     a {
         color: #1B4721;
         font-size: 20px;

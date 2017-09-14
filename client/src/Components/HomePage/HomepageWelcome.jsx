@@ -16,16 +16,19 @@ const WelcomeContainer = styled.div`
     justify-content: center;
     align-items: center;
     opacity: 0.9;
+    box-shadow: 0px 0px 25px black;
     h1 {
         font-size: 45px;
         color: #CCB80C;
         margin: 20px 10px;
+        text-shadow: 1px 1px 15px black;
     }
 `
 
 const ContinueAsGuest = styled.p`
     color: white;
     text-decoration: none;
+    text-shadow: 1px 1px 10px black;
 `
 const LogInButton = styled.div`
     text-align: center;
@@ -36,8 +39,10 @@ const LogInButton = styled.div`
     border: 3px solid #CCB80C;
     border-radius: 3vh;
     margin: 10px;
+    box-shadow: 2px 2px 10px black;
     :hover {
         border: 3px solid black;
+        box-shadow: 2px 2px 20px black;
     }
 `
 
@@ -51,10 +56,11 @@ const Form = styled.form`
         width: 30vw;
         font-size: 35px;
         margin: 7px;
+        box-shadow: 0px 0px 15px black;
     }
     button {
         width: 20vw;
-        height: 35px;
+        height: 40px;
         text-align: center;
         font-size: 30px;
         border: 3px solid #CCB80C;
@@ -62,6 +68,10 @@ const Form = styled.form`
         background-color: #CCB80C;
         color: #1B4721;
         margin-bottom: 15px;
+        box-shadow: 0px 0px 15px black;
+    }
+    button:hover{
+        border 3px solid #1B4721;
     }
 `
 

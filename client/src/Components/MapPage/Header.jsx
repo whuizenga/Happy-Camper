@@ -9,6 +9,7 @@ const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0px 0px 15px black;
     a {
         color: #CCB80C;
         text-decoration: none;

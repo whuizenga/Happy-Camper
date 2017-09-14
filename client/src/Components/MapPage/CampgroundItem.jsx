@@ -14,10 +14,14 @@ class CampgroundItem extends Component {
         }
     }
     componentWillMount() {
-        console.log(this.props.campground)
         let facilityName = this.props.campground.facilityName;
         facilityName = facilityName.replace("&apos;", "'");
         facilityName = facilityName.toLowerCase();
+        facilityName = facilityName.split(' ');
+        facilityName = facilityName.map((word) => {
+            return word.charAt(0).toUpperCase()+word.substr(1);
+        })
+        facilityName = facilityName.join(' ');
         this.setState({facilityName});
     }
 
@@ -34,8 +38,14 @@ class CampgroundItem extends Component {
             margin: 3px 0px;
             background-color: white;
         `
+        const CampgroundTitle = styled.div`
+            a{
+                color: black;
+                text-decoration: none;
+            }
+        `
         return (
-            <div onClick={this._checkCampgroundDataIntegity}>
+            <CampgroundTitle onClick={this._checkCampgroundDataIntegity}>
             <Link to={`/campground/${this.props.campground.latitude}/${this.props.campground.longitude}`}>
             <CampgroundDiv>
                 <div>
@@ -48,7 +58,7 @@ class CampgroundItem extends Component {
                  </div>
             </CampgroundDiv>
             </Link>
-            </div>
+            </CampgroundTitle>
         );
     }
 }
