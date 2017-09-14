@@ -1,5 +1,5 @@
-require 'HTTParty'
 class Api::CampsitesController < ApplicationController
+    
     def index
         lat = params[:lat]
         long = params[:long]
