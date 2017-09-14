@@ -27,6 +27,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    font-family: 'Raleway', sans-serif;
 `
 const Summary = styled.div`
     p{

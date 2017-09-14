@@ -13,6 +13,7 @@ const HeaderContainer = styled.div`
     a {
         color: #CCB80C;
         text-decoration: none;
+        font-family: 'Raleway', sans-serif;
     }
 `
 

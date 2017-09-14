@@ -15,6 +15,7 @@ const SignUpDiv = styled.div`
     margin: 10px;
     align-self: flex-end;
     box-shadow: 0px 0px 15px black;
+    font-family: 'Raleway', sans-serif;
     :hover {
         border: 3px solid #1B4721;
         box-shadow: 0px 0px 20px black;

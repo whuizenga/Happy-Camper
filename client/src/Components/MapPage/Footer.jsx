@@ -14,6 +14,7 @@ const FooterContainer = styled.div`
         margin: 0px 50px;
         color: #CCB80C;
         text-shadow: 0px 0px 15px black;
+        font-family: 'Righteous', cursive;
     }
 `
 

@@ -22,6 +22,7 @@ const WelcomeContainer = styled.div`
         color: #CCB80C;
         margin: 20px 10px;
         text-shadow: 1px 1px 15px black;
+        font-family: 'Righteous', cursive;
     }
 `
 
@@ -29,6 +30,7 @@ const ContinueAsGuest = styled.p`
     color: white;
     text-decoration: none;
     text-shadow: 1px 1px 10px black;
+    font-family: 'Raleway', sans-serif;
 `
 const LogInButton = styled.div`
     text-align: center;
@@ -40,6 +42,7 @@ const LogInButton = styled.div`
     border-radius: 3vh;
     margin: 10px;
     box-shadow: 2px 2px 10px black;
+    font-family: 'Raleway', sans-serif;
     :hover {
         border: 3px solid black;
         box-shadow: 2px 2px 20px black;
@@ -51,12 +54,14 @@ const Form = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Raleway', sans-serif;
     input{
         height: 35px;
         width: 30vw;
         font-size: 35px;
         margin: 7px;
         box-shadow: 0px 0px 15px black;
+        font-family: 'Raleway', sans-serif;
     }
     button {
         width: 20vw;
@@ -69,6 +74,7 @@ const Form = styled.form`
         color: #1B4721;
         margin-bottom: 15px;
         box-shadow: 0px 0px 15px black;
+        font-family: 'Raleway', sans-serif;
     }
     button:hover{
         border 3px solid #1B4721;

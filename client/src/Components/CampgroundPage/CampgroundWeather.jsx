@@ -6,6 +6,10 @@ import FiveDayForecast from './FiveDayForecast';
 const Wrapper = styled.div`
     height: 44vh;
     width: 100vw;
+    font-family: 'Raleway', sans-serif;
+    h1 {
+        font-family: 'Righteous', cursive;
+    }
 `
 const DailyWeatherContainer = styled.div`
     display: flex;

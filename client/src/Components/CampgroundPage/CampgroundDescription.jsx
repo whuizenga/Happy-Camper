@@ -7,6 +7,10 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-family: 'Raleway', sans-serif;
+    h1, h3 {
+        font-family: 'Righteous', cursive;
+    }
 `
 const OptionsDiv = styled.div`
     display: flex;
@@ -21,6 +25,7 @@ const FalseButton = styled.div`
     border-radius: 15px;
     padding: 8px;
     box-shadow: 0px 0px 15px black;
+    font-family: 'Raleway', sans-serif;
     :hover {
         border: 2px solid #CCB80C;
         color: #CCB80C;
@@ -33,6 +38,7 @@ const TrueButton = styled.div`
     border-radius: 15px;
     padding: 8px;
     box-shadow: 0px 0px 15px black;
+    font-family: 'Raleway', sans-serif;
     :hover {
         border: 2px solid black;
         color: black;

@@ -9,6 +9,7 @@ const FooterDiv = styled.div`
     display: flex;
     align-items: center;
     box-shadow: 0px 0px 15px black;
+    font-family: 'Righteous', cursive;
     a {
         color: #1B4721;
         font-size: 20px;
