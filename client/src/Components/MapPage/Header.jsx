@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import SearchBar from './SearchBar';
+
 const HeaderContainer = styled.div`
     width: 100vw;
     height: 8vh;
@@ -28,10 +30,10 @@ class MapPageHeader extends Component {
     render() {
         return (
             <HeaderContainer>
-                Search Component
+                <SearchBar />
                 <LinksContainer>
-                    <Link to="/profile">User Profile</Link>
-                    <Link to="/">Log out</Link>
+                    {localStorage["access-token"] ? <Link to="/profile">User Profile</Link> : null}
+                    {localStorage["access-token"] ? <Link to="/">Log out</Link> : <Link to="/login">Log in</Link>}
                 </LinksContainer>
             </HeaderContainer>
         );

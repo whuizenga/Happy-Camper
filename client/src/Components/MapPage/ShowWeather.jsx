@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
-import { saveAuthTokens } from '../../util.js';
-
 const BasicDiv = styled.div `
     p {
         margin: 0;
@@ -40,7 +38,6 @@ class ShowWeather extends Component {
             const lat = this.props.lat;
             const long = this.props.long;
             axios.get(`/api/campsites/weather?lat=${lat}&long=${long}`).then((res) => {
-                saveAuthTokens(res.headers);
                 const newState = {...this.state}
                 newState.city = res.data.city;
                 this._parseWeatherData(res.data.weather)
