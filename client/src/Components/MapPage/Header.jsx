@@ -26,6 +26,10 @@ const LinksContainer = styled.div`
     }
     @media (max-width: 800px){
         width: 50vw;
+        a {
+            
+            margin: 5px;
+        }
     }
 `
 
