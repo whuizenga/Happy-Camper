@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
+
+import { deleteSession } from '../../util.js';
 
 const SignUpWrapper = styled.div`
     align-self: flex-end; 
@@ -35,7 +37,8 @@ class SignUpButton extends Component {
     constructor() {
         super()
         this.state={
-            loggedIn: false
+            loggedIn: false,
+            redirect: false,
         }
     }
     componentWillMount() {
@@ -49,13 +52,19 @@ class SignUpButton extends Component {
     _handleLogOut = ()=> {
         axios.delete("/auth/sign_out").then((res) => {
             console.log("user signed out")
-            localStorage.clear();
+            deleteSession();
+            this.setState({redirect: true, loggedIn: false});
         }).catch((err) => {
             console.log("Couldn't log out")
             console.log(err)
+            deleteSession();
+            this.setState({redirect: true, loggedIn: false});
         })
     }
     render() {
+        if (this.state.redirect && this.state.loggedIn){
+            return (<Redirect to="/" />)
+        } 
         if (this.state.loggedIn){
             return (
                 <SignUpDiv onClick={this._handleLogOut}>

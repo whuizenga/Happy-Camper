@@ -27,3 +27,11 @@ export function setAxiosHeaders(headers){
  axios.defaults.headers.uid = headers.uid
  axios.defaults.headers['access-token'] = headers['access-token']
 }
+
+export function deleteSession(){
+    localStorage.clear()
+    delete axios.defaults.headers.client
+    delete axios.defaults.headers.expiry
+    delete axios.defaults.headers.uid
+    delete axios.defaults.headers['access-token']
+}
