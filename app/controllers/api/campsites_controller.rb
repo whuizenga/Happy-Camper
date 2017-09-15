@@ -70,6 +70,7 @@ class Api::CampsitesController < ApplicationController
 
             if html
                 puts "Ahh fuck, html"
+                @campground.reservation_url = "/campsiteSearch.do?contractCode=#{@campground.state}&parkId=#{@campground.park_id}"
             else
                 puts "yay! no html"
                 response = Hash.from_xml(xml.body)
@@ -80,7 +81,7 @@ class Api::CampsitesController < ApplicationController
                 @campground.important_information = response["detailDescription"]["importantInformation"] || ""
                 @campground.nearby_attractions = response["detailDescription"]["nearbyAttrctionDescription"] || ""
                 @campground.recreation_information = response["detailDescription"]["recreationDescription"] || ""
-                @campground.reservation_url = response["detailDescription"]["reservationUrl"] || "http://www.reserveamerica.com/campsiteSearch.do?contractCode=#{@campground.state}&parkId=#{@campground.park_id}"
+                @campground.reservation_url = response["detailDescription"]["reservationUrl"] || "/campsiteSearch.do?contractCode=#{@campground.state}&parkId=#{@campground.park_id}"
                 @campground.save!
             end
     

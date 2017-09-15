@@ -16,6 +16,9 @@ const Wrapper = styled.div`
         font-family: 'Righteous', cursive;
         margin: 5px 15px;
     }
+    a {
+        display: inline;
+    }
 `
 const OptionsDiv = styled.div`
     display: flex;
@@ -51,6 +54,34 @@ const TrueButton = styled.div`
     :hover {
         border: 2px solid black;
         color: black;
+    }
+`
+
+const CheckReservationStatus = styled.div`
+    display: flex;
+    width: 33vw;
+    justify-content: space-between;
+    align-items: center;
+    a {
+        margin: 0;
+        font-size: 14px;
+        color: #1B4721;
+        text-decoration: none;
+    }
+    div {
+        background-color: #CCB80C;
+        border: 2px solid #CCB80C;
+        color: #1B4721;
+        border-radius: 15px;
+        box-shadow: 0px 0px 15px black;
+        font-family: 'Raleway', sans-serif;
+        margin-bottom: 10px;
+        height: 15px;
+        padding:6px;
+        :hover {
+            border: 2px solid black;
+            color: black;
+        }
     }
 `
 class CampgroundDescription extends Component {
@@ -115,7 +146,14 @@ class CampgroundDescription extends Component {
             <Wrapper>
                 <div>
                 <h1>{this.props.campgroundInfo.name}</h1>
-                <h3>{this.props.campgroundInfo.city}, {this.props.campgroundInfo.state}</h3>
+                <CheckReservationStatus>
+                    <h3>{this.props.campgroundInfo.city}, {this.props.campgroundInfo.state}</h3> 
+                    <a href={`http://www.reserveamerica.com${this.props.campgroundInfo.reservation_url}`} target="_black">
+                        <div>
+                            Check Reservation Status
+                        </div>
+                    </a>
+                </CheckReservationStatus>
                 <p>{this.state.description ? this.props.campgroundInfo.description : null}</p>
                 <p>{this.state.alert ? alertText : null}</p>
                 <p>{this.state.directions ? this.props.campgroundInfo.directions : null}</p>
