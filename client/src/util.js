@@ -22,7 +22,6 @@ export function setAxiosHeaders(headers){
  localStorage.setItem("uid", headers.uid)
  localStorage.setItem("access-token", headers['access-token'])
 
- axios.defaults.headers['token-type'] = "Bearer";
  axios.defaults.headers.client = headers.client
  axios.defaults.headers.expiry = headers.expiry
  axios.defaults.headers.uid = headers.uid
