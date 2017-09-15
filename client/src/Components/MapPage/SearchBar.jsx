@@ -24,6 +24,9 @@ const SearchWrapper = styled.div`
         height: 25px;
         width: 25px;
     }
+    @media (max-width: 800px){
+        width: 50vw;
+    }
 `
 
 class SearchBar extends Component {

@@ -38,7 +38,10 @@ const BackDiv = styled.div`
         margin: 0px;
         text-decoration: none;
         font-family: 'Raleway', sans-serif;
-    }   
+    }
+    @media (max-width: 800px){
+            width: 20vw;
+    }
 `
 
 class SignUpPage extends Component {

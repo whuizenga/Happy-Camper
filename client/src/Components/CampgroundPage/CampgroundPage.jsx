@@ -14,6 +14,9 @@ const CampgroundContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @media (max-width: 800px){
+        height: auto;
+    }
 `
 class CampgroundPage extends Component {
     constructor() {

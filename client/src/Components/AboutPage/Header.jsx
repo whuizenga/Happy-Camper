@@ -25,6 +25,14 @@ const HeaderWrapper = styled.div`
     a:hover {
         color: white;
     }
+    @media (max-width: 800px){
+        h1 {
+            font-size: 25px;
+            margin: 0px 10px;
+        }
+        a {
+            margin: 0px 10px;
+        }
 `
 
 class Header extends Component {

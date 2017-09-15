@@ -11,11 +11,17 @@ const Wrapper = styled.div`
     h1 {
         font-family: 'Righteous', cursive;
     }
+    @media (max-width: 800px){
+        height: auto;
+    }
 `
 const DailyWeatherContainer = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+    @media (max-width: 800px){
+        flex-direction: column;
+    }
 `
 const DarkSky = styled.div`
     border-radius: 10px 30px;
@@ -28,6 +34,9 @@ const DarkSky = styled.div`
     margin: 10px;
     :hover{
         background: linear-gradient(to bottom right, purple, black, purple);
+    }
+    @media (max-width: 800px){
+        width: 33vw;
     }
     `
     

@@ -19,11 +19,17 @@ const Wrapper = styled.div`
     a {
         display: inline;
     }
+    @media (max-width: 800px){
+        height: auto;
+    }
 `
 const OptionsDiv = styled.div`
     display: flex;
     justify-content: space-around;
     align-content: center;
+    @media (max-width: 800px){
+        flex-wrap: wrap;
+    }
 `
 
 const FalseButton = styled.div`
@@ -40,6 +46,10 @@ const FalseButton = styled.div`
         border: 2px solid #CCB80C;
         color: #CCB80C;
     }
+    @media (max-width: 800px){
+        text-align: center;
+        min-width: 40vw;
+    }
 `
 const TrueButton = styled.div`
     background-color: #CCB80C;
@@ -54,6 +64,10 @@ const TrueButton = styled.div`
     :hover {
         border: 2px solid black;
         color: black;
+    }
+    @media (max-width: 800px){
+        text-align: center;
+        min-width: 40vw;
     }
 `
 
@@ -78,10 +92,24 @@ const CheckReservationStatus = styled.div`
         margin-bottom: 10px;
         height: 15px;
         padding:6px;
+        text-align: center;
         :hover {
             border: 2px solid black;
             color: black;
         }
+    }
+    @media (max-width: 800px){
+       div{
+            width: 45vw;
+       }
+    }
+`
+
+const DescriptionDiv = styled.div`
+    @media (max-width: 800px){
+        height: 40vh;
+        overflow: scroll;
+        margin-bottom: 5px;
     }
 `
 class CampgroundDescription extends Component {
@@ -154,6 +182,8 @@ class CampgroundDescription extends Component {
                         </div>
                     </a>
                 </CheckReservationStatus>
+                </div>
+                <DescriptionDiv>
                 <p>{this.state.description ? this.props.campgroundInfo.description : null}</p>
                 <p>{this.state.alert ? alertText : null}</p>
                 <p>{this.state.directions ? this.props.campgroundInfo.directions : null}</p>
@@ -161,7 +191,7 @@ class CampgroundDescription extends Component {
                 <p>{this.state.important ? this.props.campgroundInfo.important_information : null}</p>
                 <p>{this.state.nearby ? this.props.campgroundInfo.nearby_attractions : null}</p>
                 <p>{this.state.recreation ? this.props.campgroundInfo.recreation_information : null}</p>
-                </div>
+                </DescriptionDiv>
                 <OptionsDiv>
                     {this.state.description ? <TrueButton onClick={this._moreInformation}>More Info</TrueButton> : <FalseButton onClick={this._moreInformation}>More Info</FalseButton> }
                     {this.state.alert ?<TrueButton onClick={this._showAlerts}>Alerts</TrueButton> : <FalseButton onClick={this._showAlerts}>Alerts</FalseButton> }

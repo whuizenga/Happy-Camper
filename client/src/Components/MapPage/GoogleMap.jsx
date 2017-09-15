@@ -23,7 +23,7 @@ const MapGifDiv = styled.div`
         width: 75vw;
         margin: 8vh 0px;
     }
-    @media (max-width: 1000px){
+    @media (max-width: 800px){
         display: none;
     }
 `

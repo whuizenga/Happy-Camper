@@ -21,6 +21,12 @@ const Wrapper = styled.div`
     p {
         font-family: 'Raleway', sans-serif;
     }
+    @media (max-width: 800px){
+        height: auto;
+    }
+    img {
+        margin-bottom: 15px;
+    }
 `
 
 const FAQContainer = styled.div`

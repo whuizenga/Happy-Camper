@@ -28,6 +28,10 @@ const Wrapper = styled.div`
     justify-content: flex-start;
     align-items: center;
     font-family: 'Raleway', sans-serif;
+    @media (max-width: 800px){
+        width: 66vw;
+        margin-top: 25px;
+    }
 `
 const Summary = styled.div`
     p{

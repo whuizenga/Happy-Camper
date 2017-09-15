@@ -27,6 +27,11 @@ const SignUpContainer = styled.div`
     a {
         text-decoration: none;
     }
+    @media (max-width: 800px){
+        h1{
+            font-size: 35px;
+        }
+    }
 `
 const Form = styled.form`
     display: flex;
@@ -57,7 +62,15 @@ const Form = styled.form`
     }
     button:hover{
         border 3px solid #1B4721;
-}
+    }
+    @media (max-width: 800px){
+        input {
+            width: 75vw;
+        }
+        button {
+            width: 50vw;
+        }
+    }
 `
 class SignUpForm extends Component {
     constructor(){

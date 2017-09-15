@@ -53,6 +53,9 @@ const LogInButton = styled.div`
         border: 3px solid black;
         box-shadow: 2px 2px 20px black;
     }
+    @media (max-width: 800px){
+        min-width: 20vw;
+    }
 `
 
 const Form = styled.form`
@@ -84,6 +87,14 @@ const Form = styled.form`
     }
     button:hover{
         border 3px solid #1B4721;
+    }
+    @media (max-width: 800px){
+        input {
+            width: 75vw;
+        }
+        button {
+            width: 50vw;
+        }
     }
 `
 

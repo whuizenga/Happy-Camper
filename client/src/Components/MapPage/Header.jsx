@@ -24,6 +24,9 @@ const LinksContainer = styled.div`
     a{
         margin: 0px 50px;
     }
+    @media (max-width: 800px){
+        width: 50vw;
+    }
 `
 
 class MapPageHeader extends Component {

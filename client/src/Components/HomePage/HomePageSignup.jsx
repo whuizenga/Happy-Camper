@@ -26,7 +26,9 @@ const SignUpDiv = styled.div`
         border: 3px solid #1B4721;
         box-shadow: 0px 0px 20px black;
     }
-   
+    @media (max-width: 800px){
+        width: 20vw;
+    }
 `
 
 class SignUpButton extends Component {
