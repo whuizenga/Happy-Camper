@@ -72,11 +72,17 @@ const Form = styled.form`
         }
     }
 `
+const ErrorMessage = styled.p`
+    margin: 5px;
+    color: red;
+    font-weight: bold;
+`
 class SignUpForm extends Component {
     constructor(){
         super()
         this.state = {
             redirect: false,
+            message: []
         }
     }
 
@@ -86,17 +92,26 @@ class SignUpForm extends Component {
         const email = event.target.email.value;
         const password = event.target.password.value;
         const passConfirm = event.target.password_confirmation.value;
-        const payload = {
-            email: email,
-            password: password,
-            password_confirmation: passConfirm
-          }
-        axios.post('/auth', payload).then((res) => {
-            setAxiosHeaders(res.headers);
-            const newState = {...this.state}
-            newState.redirect = true;
-            this.setState(newState);
-        })
+        if (password === passConfirm){
+            const payload = {
+                email: email,
+                password: password,
+                password_confirmation: passConfirm
+            }
+            axios.post('/auth', payload).then((res) => {
+                setAxiosHeaders(res.headers);
+                const newState = {...this.state}
+                newState.redirect = true;
+                this.setState(newState);
+            }).catch((err) => {
+                console.log(err.response.data.errors.full_messages);
+                let errors = err.response.data.errors.full_messages;
+                errors = errors.splice(1, 2);
+                this.setState({message: errors})
+            })
+        } else {
+            this.setState({message: ["passwords do not match"]});
+        }
     }
     render() {
         if(this.state.redirect){
@@ -105,6 +120,9 @@ class SignUpForm extends Component {
         return (
             <SignUpContainer>
                 <h1>Be A Happy Camper!</h1>
+                {this.state.message.map((message, i) => {
+                    return <ErrorMessage key={i}>{message}</ErrorMessage>
+                })}
                 <Form onSubmit={this._handleSubmit}>
                     <div>
                         <input name="email" type="email" placeholder="email" />
