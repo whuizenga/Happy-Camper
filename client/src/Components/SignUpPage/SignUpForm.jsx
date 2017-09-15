@@ -106,7 +106,6 @@ class SignUpForm extends Component {
             }).catch((err) => {
                 console.log(err.response.data.errors.full_messages);
                 let errors = err.response.data.errors.full_messages;
-                errors = errors.splice(1, 2);
                 this.setState({message: errors})
             })
         } else {
