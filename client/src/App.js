@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
+import axios from 'axios';
 
 import { setAxiosDefaults } from './util';
 import HomePage from './Components/HomePage/Homepage.jsx';
@@ -13,6 +14,9 @@ import UserProfilePage from './Components/UserProfilePage/UserProfilePage.jsx';
 class App extends Component {
   conponentWillMount() {
     setAxiosDefaults();
+    axios.get('/auth/validate_token').then((res) => {
+      console.log(res);
+    })
   }
   render() {
     return (
