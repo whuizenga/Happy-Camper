@@ -66,7 +66,7 @@ class MapPageHeader extends Component {
                 <SearchBar />
                 <LinksContainer>
                     {localStorage["access-token"] ? <Link to="/profile">User Profile</Link> : null}
-                    {localStorage["access-token"] ? <a onClick={this._handleLogOut} href="#">Log out</a> : <Link to="/login">Log in</Link>}
+                    {localStorage["access-token"] ? <a onClick={this._handleLogOut} href="/">Log out</a> : <Link to="/login">Log in</Link>}
                 </LinksContainer>
             </HeaderContainer>
         );

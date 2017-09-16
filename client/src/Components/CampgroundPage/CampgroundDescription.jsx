@@ -127,13 +127,13 @@ class CampgroundDescription extends Component {
     }
     _setStateToFalse = () => {
         const newState = {...this.state}
-        newState.description = false,
-        newState.alert = false,
-        newState.directions = false,
-        newState.shortDes = false,
-        newState.important = false,
-        newState.nearby = false,
-        newState.recreation = false,
+        newState.description = false;
+        newState.alert = false;
+        newState.directions = false;
+        newState.shortDes = false;
+        newState.important = false;
+        newState.nearby = false;
+        newState.recreation = false;
         this.setState(newState);
     }
     _moreInformation = () => {
@@ -198,7 +198,7 @@ class CampgroundDescription extends Component {
                     {this.state.important ? <TrueButton onClick={this._showImportantInfo}>Important Information</TrueButton> : <FalseButton onClick={this._showImportantInfo}>Important Information</FalseButton> }
                     {this.state.directions ? <TrueButton onClick={this._showDirections}>Directions</TrueButton> : <FalseButton onClick={this._showDirections}>Directions</FalseButton> }
                     {this.state.nearby ? <TrueButton onClick={this._showNearbyInfo}>Nearby Attractions</TrueButton> : <FalseButton onClick={this._showNearbyInfo}>Nearby Attractions</FalseButton> }
-                    {this.state. recreation ? <TrueButton onClick={this._showRecreation}>Recreational Activities</TrueButton> : <FalseButton onClick={this._showRecreation}>Recreational Activities</FalseButton> }
+                    {this.state.recreation ? <TrueButton onClick={this._showRecreation}>Recreational Activities</TrueButton> : <FalseButton onClick={this._showRecreation}>Recreational Activities</FalseButton> }
                 </OptionsDiv>
             </Wrapper>
         );
