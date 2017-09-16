@@ -36,16 +36,24 @@ class MapPage extends Component {
             const currentLatitude = position.coords.latitude;
             newState.defaultCenter = {lat: currentLatitude, lng: currentLongitude}
             this.setState(newState);
-            axios.get(`/api/campsites?lat=${currentLatitude}&long=${currentLongitude}`).then((res) => {
+            axios.get(`/api/campsites?lat=${currentLatitude}&long=${currentLongitude}`).then( async (res) => {
                 const newState={...this.state}
                 newState.campgroundList = res.data.resultset.result
                 //Limit the number of returns for now so I don't get blocked again.
                 newState.campgroundList.length = 50;
-                console.log(newState.campgroundList[0]);
+                await this._addHoverToCampgroundList(newState.campgroundList)
+                console.log("async");
                 newState.renderMap = true;
                 this.setState(newState);
             })
         });
+    }
+    _addHoverToCampgroundList = async (campgroundList) => {
+        await campgroundList.forEach((campground) => {
+            return campground.hover = false;
+        })
+        console.log(campgroundList[0])
+        return campgroundList;
     }
     render() {
         return (

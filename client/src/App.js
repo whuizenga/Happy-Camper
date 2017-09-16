@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import axios from 'axios';
 
-import { setAxiosDefaults } from './util';
+import { setAxiosDefaults, setAxiosHeaders } from './util';
 import HomePage from './Components/HomePage/Homepage.jsx';
 import MapPage from './Components/MapPage/MapPage.jsx';
 import AboutPage from './Components/AboutPage/AboutPage.jsx';
@@ -16,6 +16,7 @@ class App extends Component {
     setAxiosDefaults();
     axios.get('/auth/validate_token').then((res) => {
       console.log(res);
+      setAxiosHeaders();
     })
   }
   render() {
