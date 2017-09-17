@@ -1,24 +1,39 @@
-# README
+# Happy Camper
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+(readme_imgs/homepage.png)[An image of the welcome screen]
 
-Things you may want to cover:
+## Description
 
-* Ruby version
+Happy Camper is an app that assists the user with finding nearby places to hang out outdoors.  It gives users weather information for all the nearby locals so that they can make an educated choice about how enjoyable their trip will be.
 
-* System dependencies
+## Important project links
 
-* Configuration
+* Wireframe: https://marvelapp.com/je7c0eg
 
-* Database creation
+* ERD: https://docs.google.com/document/d/1JrXHQwzNdDvR3XMQ6VEhDQrvFoohzN6DoSRXYdJnco8/edit?usp=sharing
 
-* Database initialization
+* Trello: https://trello.com/b/wprBpADM/wdi-project-4
 
-* How to run the test suite
+* Github: https://github.com/whuizenga/Happy-Camper
 
-* Services (job queues, cache servers, search engines, etc.)
+* Heroku: https://happy-camper-app.herokuapp.com/
 
-* Deployment instructions
+### Technologies used
 
-* ...
+* React on Rails
+
+* Devise
+
+* google-maps-react
+
+### Apis used
+
+* Google Maps
+
+* Darksky
+
+* Active
+
+## Future development
+
+There are many things that I would like to add in the future.  User reviews of locations, being able to search by location name, or filter results by what activities are available.
