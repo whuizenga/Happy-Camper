@@ -1,6 +1,6 @@
 # Happy Camper
 
-(readme_imgs/homepage.png)[An image of the welcome screen]
+![An image of the welcome screen](readme_imgs/homepage.png)
 
 ## Description
 
