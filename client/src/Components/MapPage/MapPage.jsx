@@ -48,12 +48,27 @@ class MapPage extends Component {
             })
         });
     }
+    shouldComponentUpdate(nextProps, nextState){
+        if(this.state.renderMap){
+            return false
+        } else {
+            return true
+        }
+    }
     _addHoverToCampgroundList = async (campgroundList) => {
         await campgroundList.forEach((campground) => {
             return campground.hover = false;
         })
         console.log(campgroundList[0])
         return campgroundList;
+    }
+    _setHover = (index) => {
+        if(this.state.renderMap){
+        const newState = {...this.state}
+        newState.campgroundList[index].hover = !newState.campgroundList[index].hover
+        // console.log(`set state of ${index} to ${newState.campgroundList[index].hover}`)
+        this.setState(newState);
+        }
     }
     render() {
         return (
@@ -62,12 +77,14 @@ class MapPage extends Component {
 
                 <CampgroundContainer>
                     <CampgroundList 
-                        campgroundList={this.state.campgroundList}/>
+                        campgroundList={this.state.campgroundList}
+                        toggleHover={this._setHover}/>
                     <GoogleMap 
                         defaultCenter={this.state.defaultCenter}
                         defaultZoom={this.state.defaultZoom}
                         renderMap={this.state.renderMap}
-                        campgroundList={this.state.campgroundList}/>
+                        campgroundList={this.state.campgroundList}
+                        toggleHover={this._setHover}/>
                 </CampgroundContainer>
 
                 <Footer />

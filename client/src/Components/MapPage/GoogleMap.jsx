@@ -44,7 +44,7 @@ class GoogleMapContainer extends Component {
                         defaultCenter={this.props.defaultCenter}
                         defaultZoom={this.props.defaultZoom}>
                         {this.props.campgroundList.map((campground, i) => {
-                            return <Marker key={i} lat={campground.latitude} lng={campground.longitude} />
+                            return <Marker key={i} lat={campground.latitude} lng={campground.longitude} hover={campground.hover}/>
                         })}
                     </GoogleMap>
                 </MapDiv>

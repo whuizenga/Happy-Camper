@@ -33,6 +33,9 @@ class ShowWeather extends Component {
             dayThree: {},
         }
     }
+    componentWillMount() {
+        this._getWeatherData();
+    }
     _getWeatherData = () => {
         if(this.state.getData){
             this.setState({getData: false})
@@ -77,7 +80,6 @@ class ShowWeather extends Component {
         }
     }
     render() {
-        this._getWeatherData();
         const DayOneDiv = styled.div`
             background-color: ${this._divColor(this.state.dayOne.precip)};
             border-radius: 100%;

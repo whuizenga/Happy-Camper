@@ -30,6 +30,9 @@ class CampgroundItem extends Component {
         axios.put(`/api/campsites/update?lat=${this.props.campground.latitude}&long=${this.props.campground.longitude}&state=${this.props.campground.state}&park_id=${this.props.campground.facilityID}&name=${this.state.facilityName}`).then((res) => {
         })
     }
+    _toggleHover = () => {
+            this.props.toggleHover(this.props.index);
+    }
     render() {
         const CampgroundDiv = styled.div`
             height: 12vh;
@@ -37,6 +40,9 @@ class CampgroundItem extends Component {
             margin: 3px 0px;
             background-color: white;
             font-family: 'Raleway', sans-serif;
+            :hover{
+                background-color: yellow;
+            }
             @media (max-width: 1000px){
                 width: 100vw;
             }
@@ -48,8 +54,9 @@ class CampgroundItem extends Component {
             }
         `
         return (
-            <CampgroundTitle onClick={this._checkCampgroundDataIntegity}>
+            <CampgroundTitle onClick={this._checkCampgroundDataIntegity} onMouseEnter={this._toggleHover} onMouseLeave={this._toggleHover}>
             <Link to={`/campground/${this.props.campground.latitude}/${this.props.campground.longitude}`}>
+            {/* <CampgroundDiv> */}
             <CampgroundDiv>
                 <div>
                     {this.state.facilityName}

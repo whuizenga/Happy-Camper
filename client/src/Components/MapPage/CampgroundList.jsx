@@ -15,7 +15,8 @@ class CampGroundList extends Component {
             <CampgroundListDiv>
                 {this.props.campgroundList.map((campground, i) => {
                     return (<CampgroundItem key={i} index={i}
-                        campground={campground}/>
+                                    campground={campground}
+                                    toggleHover={this.props.toggleHover} />
                 )})}
             </CampgroundListDiv>
         );
